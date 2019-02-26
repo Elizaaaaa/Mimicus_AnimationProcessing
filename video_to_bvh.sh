@@ -19,6 +19,7 @@ python model_load.py
 cd ..
 
 bash hmr/3dpose_estimate.sh
+#Todo: make a for loop to generate bvh file from all move folders
 blender --background hmr/csv_to_bvh.blend -noaudio -P hmr/csv_to_bvh.py
 blender --background hmr/bvh_to_fbx.blend -noaudio -P hmr/bvh_to_fbx.py
 

@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/2d_pose_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/2d_pose_estimation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model/get_keras_model.sh" beforeDir="false" afterPath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model/get_keras_model.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model_load.py" beforeDir="false" afterPath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model_load.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video_to_bvh.sh" beforeDir="false" afterPath="$PROJECT_DIR$/video_to_bvh.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,11 +21,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hmr/csv_to_bvh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="471">
+              <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" selection-start-line="22" selection-end-line="22" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -37,12 +47,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/video_to_bvh.sh" />
         <option value="$PROJECT_DIR$/hmr/csv_to_bvh.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="238" />
+    <option name="x" value="424" />
     <option name="y" value="38" />
     <option name="width" value="1442" />
     <option name="height" value="1012" />
@@ -100,15 +111,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551210340636</updated>
-      <workItem from="1551210342508" duration="46000" />
+      <workItem from="1551210342508" duration="1950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46000" />
+    <option name="totallyTimeSpent" value="1950000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="238" y="38" width="1442" height="1012" extended-state="0" />
+    <frame x="424" y="38" width="1442" height="1012" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -138,10 +149,17 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" selection-start-line="22" selection-end-line="22" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hmr/csv_to_bvh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="471">
+          <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

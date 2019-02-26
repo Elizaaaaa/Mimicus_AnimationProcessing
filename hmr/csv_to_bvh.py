@@ -1,6 +1,7 @@
 import csv
 import os
 import bpy
+import sys
 
 objects = bpy.context.scene.objects
 
@@ -12,10 +13,13 @@ for object in objects:
 
 print(empties)
 
+move = sys.argv[6]
+
 filename = 'csv_joined.csv'
-directory = r'hmr/output/csv_joined'  # <-- if you have linux or osx
+directory = r'./hmr/output/csv/'+move
 
 fullpath = os.path.join(directory, filename)
+print(fullpath)
 
 with open(fullpath, 'r', newline='') as csvfile:
     ofile = csv.reader(csvfile, delimiter=',')
@@ -40,7 +44,6 @@ with open(fullpath, 'r', newline='') as csvfile:
             ob.keyframe_insert(data_path="location", index=-1)
 
 bpy.data.objects['rig'].select = True
-
-target_file = 'hmr/output/bvh_animation/estimated_animation.bvh'
+target_file = './hmr/output/bvh_animation/'+move+'.bvh'
 
 bpy.ops.export_anim.bvh(filepath=target_file)
