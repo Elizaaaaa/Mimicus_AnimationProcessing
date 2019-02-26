@@ -19,7 +19,7 @@ filename = 'csv_joined.csv'
 directory = r'./hmr/output/csv/'+move
 
 fullpath = os.path.join(directory, filename)
-print(fullpath)
+total_frame = 0
 
 with open(fullpath, 'r', newline='') as csvfile:
     ofile = csv.reader(csvfile, delimiter=',')
@@ -37,7 +37,7 @@ with open(fullpath, 'r', newline='') as csvfile:
                        fpts[24:27], fpts[27:30], fpts[30:33], fpts[33:36],
                        fpts[36:39], fpts[39:42], fpts[42:45], fpts[45:48],
                        fpts[48:51], fpts[51:54], fpts[54:57], fpts[57:60]]
-
+        total_frame = frame_num
         bpy.context.scene.frame_set(frame_num)
         for ob, position in zip(empties, coordinates):
             ob.location = position
@@ -46,4 +46,4 @@ with open(fullpath, 'r', newline='') as csvfile:
 bpy.data.objects['rig'].select = True
 target_file = './hmr/output/bvh_animation/'+move+'.bvh'
 
-bpy.ops.export_anim.bvh(filepath=target_file)
+bpy.ops.export_anim.bvh(filepath=target_file, frame_start=1, frame_end=total_frame)
