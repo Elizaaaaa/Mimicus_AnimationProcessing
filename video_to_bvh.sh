@@ -19,14 +19,8 @@ python model_load.py
 cd ..
 
 bash hmr/3dpose_estimate.sh
-#Todo: make a for loop to generate bvh file from all move folders
-for f in hmr/output/csv/*; do
-    IFS='/' read -a ary <<< "$f"
-    movement = ${ary[3]}
-	echo "Creating bvh for $movement"
-    blender --background hmr/csv_to_bvh.blend -noaudio -P hmr/csv_to_bvh.py ${movement}
-done
 
+blender --background hmr/csv_to_bvh.blend -noaudio -P hmr/csv_to_bvh.py
 blender --background hmr/bvh_to_fbx.blend -noaudio -P hmr/bvh_to_fbx.py
 
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*

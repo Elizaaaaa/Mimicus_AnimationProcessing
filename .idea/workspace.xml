@@ -2,12 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="598a9af2-0116-46b3-8ef1-a145d751b3d9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmr/3dpose_estimate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/3dpose_estimate.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmr/csv_to_bvh.py" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/csv_to_bvh.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmr/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/crunch1.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/crunch1.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/crunch2.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/crunch2.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/crunch3.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/crunch3.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/drag1.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/drag1.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/jump1.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/jump1.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/jump2.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/jump2.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/jump3.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/jump3.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/jump4.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/jump4.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/punch1.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/punch1.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/push1.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/push1.bvh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmr/output/bvh_animation/push2.bvh" beforeDir="false" afterPath="$PROJECT_DIR$/hmr/output/bvh_animation/push2.bvh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/2d_pose_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/2d_pose_estimation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model/get_keras_model.sh" beforeDir="false" afterPath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model/get_keras_model.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model_load.py" beforeDir="false" afterPath="$PROJECT_DIR$/keras_Realtime_Multi-Person_Pose_Estimation/model_load.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video_to_bvh.sh" beforeDir="false" afterPath="$PROJECT_DIR$/video_to_bvh.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hmr/csv_to_bvh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="129">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -30,10 +43,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hmr/file_name_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="22" selection-start-line="22" selection-end-line="27" selection-end-column="4" />
+              <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -59,13 +84,13 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/hmr" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/video_to_bvh.sh" />
         <option value="$PROJECT_DIR$/test.sh" />
+        <option value="$PROJECT_DIR$/video_to_bvh.sh" />
         <option value="$PROJECT_DIR$/hmr/csv_to_bvh.py" />
       </list>
     </option>
@@ -134,12 +159,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551210340636</updated>
-      <workItem from="1551210342508" duration="3597000" />
+      <workItem from="1551210342508" duration="3951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3597000" />
+    <option name="totallyTimeSpent" value="3951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="267" y="65" width="1442" height="1012" extended-state="0" />
@@ -172,10 +197,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
+    <entry file="file://$PROJECT_DIR$/test.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" selection-start-line="22" selection-end-line="27" selection-end-column="4" />
+        <state relative-caret-position="126">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -186,20 +211,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
+    <entry file="file://$PROJECT_DIR$/hmr/file_name_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hmr/csv_to_bvh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="129">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
         </state>
       </provider>
     </entry>
