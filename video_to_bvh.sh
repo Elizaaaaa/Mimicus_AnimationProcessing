@@ -3,7 +3,6 @@
 #mkdir hmr/output
 mkdir hmr/output/csv
 mkdir hmr/output/images
-mkdir hmr/output/csv_joined
 mkdir hmr/output/bvh_animation
 
 cd keras_Realtime_Multi-Person_Pose_Estimation
@@ -26,8 +25,7 @@ blender --background hmr/bvh_to_fbx.blend -noaudio -P hmr/bvh_to_fbx.py
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/*
 
-#rm hmr/output/csv/*
-#rm hmr/output/csv_joined/*
+rm -rf hmr/output/csv/*
 #rm hmr/output/images/*
 
 

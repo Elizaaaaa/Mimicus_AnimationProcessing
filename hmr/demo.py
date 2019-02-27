@@ -201,7 +201,7 @@ def join_csv():
 def classify_images():
     print("classify movements!")
 
-    path = './output/csv/'
+    path = 'hmr/output/csv/'
     movement_types = []
     all_files = glob.glob(os.path.join(path, "*.csv"))
 
@@ -210,9 +210,9 @@ def classify_images():
         move_name = files[0:nameLen]
         if move_name not in movement_types:
             movement_types.append(move_name)
-            if os.path.exists(move_name):
-                shutil.rmtree(move_name)
-            os.mkdir(move_name)
+            if not os.path.exists(move_name):
+                #shutil.rmtree(move_name)
+                os.mkdir(move_name)
 
         newname = move_name + "/" + files[nameLen:len(files)]
         os.rename(files, newname)
