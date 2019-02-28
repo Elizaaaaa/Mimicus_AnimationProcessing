@@ -26,6 +26,6 @@ rm keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/*
 
 rm -rf hmr/output/csv/*
-#rm hmr/output/images/*
+rm hmr/output/images/*
 
 
