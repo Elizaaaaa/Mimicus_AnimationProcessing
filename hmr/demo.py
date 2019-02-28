@@ -229,8 +229,8 @@ if __name__ == '__main__':
 
     main(config.img_path, config.json_path)
 
-    classify_images()
+    #classify_images()
     
-    join_csv()
+    #join_csv()
     
 print('\nResult is in hmr/output (you can open images in Colaboratory by double-clicking them)')

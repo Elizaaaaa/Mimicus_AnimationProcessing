@@ -12,4 +12,9 @@ for f in keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*; do
   
 done
 
+cd hmr
+python classify_images.py
+python join_csv.py
+cd ..
+
 echo "Done"
