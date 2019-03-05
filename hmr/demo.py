@@ -90,6 +90,7 @@ def visualize(img_path, img, proc_param, joints, verts, cam):
     # ipdb.set_trace()
 
 
+#TODO: Load all images, process all, and return all
 def preprocess_image(img_path, json_path=None):
     img = io.imread(img_path)
     if img.shape[2] == 4:
@@ -120,6 +121,7 @@ def main(img_path, json_path=None):
     sess = tf.Session()
     model = RunModel(config, sess=sess)
 
+#TODO: input_img, proc_pram, img all should be array that contains all images
     input_img, proc_param, img = preprocess_image(img_path, json_path)
     # Add batch dimension: 1 x D x D x 3
     input_img = np.expand_dims(input_img, 0)
