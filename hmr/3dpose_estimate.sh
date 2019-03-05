@@ -8,7 +8,7 @@ for f in keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*; do
   echo "Processing $no_ext"
   
   python2 hmr/demo.py --img_path $f \
-                     --json_path keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/$no_ext.json  
+                     --json_path keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/$no_ext.json
   
 done
 

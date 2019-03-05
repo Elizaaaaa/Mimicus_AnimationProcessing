@@ -27,7 +27,7 @@ from src.util import openpose as op_util
 import src.config
 from src.RunModel import RunModel
 
-import pandas as pd
+import pandas as pd 
 import os
 import glob
 import shutil
@@ -85,13 +85,14 @@ def visualize(img_path, img, proc_param, joints, verts, cam):
     plt.title('diff vp')
     plt.axis('off')
     plt.draw()
-    plt.savefig("hmr/output/images/" + os.path.splitext(os.path.basename(img_path))[0] + ".png")
+    plt.savefig("hmr/output/images/"+os.path.splitext(os.path.basename(img_path))[0]+".png")
     # import ipdb
     # ipdb.set_trace()
 
 
-# TODO: Load all images, process all, and return all
+#TODO: Load all images, process all, and return all
 def preprocess_image(img_path, json_path=None):
+    print(img_path)
     img = io.imread(img_path)
     if img.shape[2] == 4:
         img = img[:, :, :3]
@@ -106,8 +107,6 @@ def preprocess_image(img_path, json_path=None):
         # image center in (x,y)
         center = center[::-1]
     else:
-        #TODO: correct the json file name
-        print(json_path)
         scale, center = op_util.get_bbox(json_path)
 
     crop, proc_param = img_util.scale_and_crop(img, scale, center,
@@ -123,80 +122,83 @@ def main(img_path, json_path=None):
     sess = tf.Session()
     model = RunModel(config, sess=sess)
 
-    # TODO: input_img, proc_pram, img all should be array that contains all images
-    images = glob.glob(os.path.join(img_path, "*.png"))
-    input_images = []
-    proc_params = []
-    for img in images:
-        #TODO: find the json file with the same name
-        temp = img.split('/')
-        json_name = temp[2]
-        json_name = json_name[0:len(json_name)-3]
-        json_path = json_path+json_name+'json'
+#TODO: input_img, proc_pram, img all should be array that contains all images
+    input_img, proc_param, img = preprocess_image(img_path, json_path)
+    # Add batch dimension: 1 x D x D x 3
+    input_img = np.expand_dims(input_img, 0)
 
-        input_img, proc_param, img = preprocess_image(img, json_path)
+    joints, verts, cams, joints3d, theta = model.predict(
+        input_img, get_theta=True)
 
-    # ======== Original Script ==============
-    #input_img, proc_param, img = preprocess_image(img_path, json_path)
-    ## Add batch dimension: 1 x D x D x 3
-    #input_img = np.expand_dims(input_img, 0)
+#     print('JOINTS 3D:')
+#     print(joints3d.shape)
+#     print(joints3d)
 
-    #joints, verts, cams, joints3d, theta = model.predict(
-    #    input_img, get_theta=True)
+    joints_names = ['Ankle.R_x', 'Ankle.R_y', 'Ankle.R_z',
+                   'Knee.R_x', 'Knee.R_y', 'Knee.R_z',
+                   'Hip.R_x', 'Hip.R_y', 'Hip.R_z',
+                   'Hip.L_x', 'Hip.L_y', 'Hip.L_z',
+                   'Knee.L_x', 'Knee.L_y', 'Knee.L_z', 
+                   'Ankle.L_x', 'Ankle.L_y', 'Ankle.L_z',
+                   'Wrist.R_x', 'Wrist.R_y', 'Wrist.R_z', 
+                   'Elbow.R_x', 'Elbow.R_y', 'Elbow.R_z', 
+                   'Shoulder.R_x', 'Shoulder.R_y', 'Shoulder.R_z', 
+                   'Shoulder.L_x', 'Shoulder.L_y', 'Shoulder.L_z',
+                   'Elbow.L_x', 'Elbow.L_y', 'Elbow.L_z',
+                   'Wrist.L_x', 'Wrist.L_y', 'Wrist.L_z', 
+                   'Neck_x', 'Neck_y', 'Neck_z', 
+                   'Head_x', 'Head_y', 'Head_z', 
+                   'Nose_x', 'Nose_y', 'Nose_z', 
+                   'Eye.L_x', 'Eye.L_y', 'Eye.L_z', 
+                   'Eye.R_x', 'Eye.R_y', 'Eye.R_z', 
+                   'Ear.L_x', 'Ear.L_y', 'Ear.L_z', 
+                   'Ear.R_x', 'Ear.R_y', 'Ear.R_z']
+    
+    joints_export = pd.DataFrame(joints3d.reshape(1,57), columns=joints_names)
+    joints_export.index.name = 'frame'
+    
+    joints_export.iloc[:, 1::3] = joints_export.iloc[:, 1::3]*-1
+    joints_export.iloc[:, 2::3] = joints_export.iloc[:, 2::3]*-1
 
-    ##     print('JOINTS 3D:')
-    ##    print(joints3d.shape)
-    ##     print(joints3d)
+#     col_list = list(joints_export)
 
-    #joints_names = ['Ankle.R_x', 'Ankle.R_y', 'Ankle.R_z',
-    #                'Knee.R_x', 'Knee.R_y', 'Knee.R_z',
-    #                'Hip.R_x', 'Hip.R_y', 'Hip.R_z',
-    #                'Hip.L_x', 'Hip.L_y', 'Hip.L_z',
-    #                'Knee.L_x', 'Knee.L_y', 'Knee.L_z',
-    #                'Ankle.L_x', 'Ankle.L_y', 'Ankle.L_z',
-    #                'Wrist.R_x', 'Wrist.R_y', 'Wrist.R_z',
-    #                'Elbow.R_x', 'Elbow.R_y', 'Elbow.R_z',
-    #                'Shoulder.R_x', 'Shoulder.R_y', 'Shoulder.R_z',
-    #                'Shoulder.L_x', 'Shoulder.L_y', 'Shoulder.L_z',
-    #                'Elbow.L_x', 'Elbow.L_y', 'Elbow.L_z',
-    #                'Wrist.L_x', 'Wrist.L_y', 'Wrist.L_z',
-    #                'Neck_x', 'Neck_y', 'Neck_z',
-    #                'Head_x', 'Head_y', 'Head_z',
-    #                'Nose_x', 'Nose_y', 'Nose_z',
-    #                'Eye.L_x', 'Eye.L_y', 'Eye.L_z',
-    #                'Eye.R_x', 'Eye.R_y', 'Eye.R_z',
-    #                'Ear.L_x', 'Ear.L_y', 'Ear.L_z',
-    #                'Ear.R_x', 'Ear.R_y', 'Ear.R_z']
+#     col_list[1::3], col_list[2::3] = col_list[2::3], col_list[1::3]
 
-    #joints_export = pd.DataFrame(joints3d.reshape(1, 57), columns=joints_names)
-    #joints_export.index.name = 'frame'
+#     joints_export = joints_export[col_list]
+    
+    hipCenter = joints_export.loc[:][['Hip.R_x', 'Hip.R_y', 'Hip.R_z',
+                                      'Hip.L_x', 'Hip.L_y', 'Hip.L_z']]
 
-    #joints_export.iloc[:, 1::3] = joints_export.iloc[:, 1::3] * -1
-    #joints_export.iloc[:, 2::3] = joints_export.iloc[:, 2::3] * -1
-
-    #hipCenter = joints_export.loc[:][['Hip.R_x', 'Hip.R_y', 'Hip.R_z',
-    #                                  'Hip.L_x', 'Hip.L_y', 'Hip.L_z']]
-
-    #joints_export['hip.Center_x'] = hipCenter.iloc[0][::3].sum() / 2
-    #joints_export['hip.Center_y'] = hipCenter.iloc[0][1::3].sum() / 2
-    #joints_export['hip.Center_z'] = hipCenter.iloc[0][2::3].sum() / 2
-
-    #joints_export.to_csv("hmr/output/csv/" + os.path.splitext(os.path.basename(img_path))[0] + ".csv")
-
-    #visualize(img_path, img, proc_param, joints[0], verts[0], cams[0])
+    joints_export['hip.Center_x'] = hipCenter.iloc[0][::3].sum()/2
+    joints_export['hip.Center_y'] = hipCenter.iloc[0][1::3].sum()/2
+    joints_export['hip.Center_z'] = hipCenter.iloc[0][2::3].sum()/2
+    
+    joints_export.to_csv("hmr/output/csv/"+os.path.splitext(os.path.basename(img_path))[0]+".csv")
+    
+#     pose = pd.DataFrame(theta[:, 3:75])
+    
+#     pose.to_csv("hmr/output/theta_test.csv", header=None, index=None)
+    
+#     print('THETA:', pose.shape, pose)
+    
+#     import cv2
+#     rotations = [cv2.Rodrigues(aa)[0] for aa in pose.reshape(-1, 3)]
+#     print('ROTATIONS:', rotations)
+    
+    visualize(img_path, img, proc_param, joints[0], verts[0], cams[0])
 
 
 def join_csv():
-    path = 'hmr/output/csv/'
-    move_types = os.listdir(path)
-    for move in move_types:
-        move_path = path + move + '/'
-        all_files = glob.glob(os.path.join(move_path, "*.csv"))
-        df_from_each_file = (pd.read_csv(f) for f in sorted(all_files))
-        concatenated_df = pd.concat(df_from_each_file, ignore_index=True)
+  path = 'hmr/output/csv/'                   
+  move_types = os.listdir(path)
+  for move in move_types:
+    move_path = path + move + '/'
+    all_files = glob.glob(os.path.join(move_path, "*.csv"))
+    df_from_each_file = (pd.read_csv(f) for f in sorted(all_files))
+    concatenated_df = pd.concat(df_from_each_file, ignore_index=True)
 
-        concatenated_df['frame'] = concatenated_df.index + 1
-        concatenated_df.to_csv(move_path + "/csv_joined.csv", index=False)
+    concatenated_df['frame'] = concatenated_df.index+1
+    concatenated_df.to_csv(move_path + "/csv_joined.csv", index=False)
 
 
 def classify_images():
@@ -212,13 +214,12 @@ def classify_images():
         if move_name not in movement_types:
             movement_types.append(move_name)
             if not os.path.exists(move_name):
-                # shutil.rmtree(move_name)
+                #shutil.rmtree(move_name)
                 os.mkdir(move_name)
 
         newname = move_name + "/" + files[nameLen:len(files)]
         os.rename(files, newname)
-
-
+    
 if __name__ == '__main__':
     config = flags.FLAGS
     config(sys.argv)
@@ -231,8 +232,8 @@ if __name__ == '__main__':
 
     main(config.img_path, config.json_path)
 
-    # classify_images()
-
-    # join_csv()
-
+    #classify_images()
+    
+    #join_csv()
+    
 print('\nResult is in hmr/output (you can open images in Colaboratory by double-clicking them)')
