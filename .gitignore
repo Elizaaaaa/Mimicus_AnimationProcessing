@@ -1,5 +1,6 @@
 *.mp4
 *.h5
+*.MP4
 hmr/models/
 hmr/output/
 keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/
