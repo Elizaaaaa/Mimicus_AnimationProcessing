@@ -106,8 +106,6 @@ def preprocess_image(img_path, json_path=None):
         # image center in (x,y)
         center = center[::-1]
     else:
-        #TODO: correct the json file name
-        print(json_path)
         scale, center = op_util.get_bbox(json_path)
 
     crop, proc_param = img_util.scale_and_crop(img, scale, center,
@@ -132,9 +130,9 @@ def main(img_path, json_path=None):
         temp = img.split('/')
         json_name = temp[2]
         json_name = json_name[0:len(json_name)-3]
-        json_path = json_path+json_name+'json'
+        json_name = json_path+json_name+'json'
 
-        input_img, proc_param, img = preprocess_image(img, json_path)
+        input_img, proc_param, img = preprocess_image(img, json_name)
 
     # ======== Original Script ==============
     #input_img, proc_param, img = preprocess_image(img_path, json_path)

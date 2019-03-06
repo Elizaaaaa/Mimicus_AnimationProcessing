@@ -306,8 +306,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hmr/demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="108" column="41" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+            <state relative-caret-position="495">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
               <folding>
                 <element signature="e#676#714#0" expanded="true" />
               </folding>
@@ -437,12 +437,12 @@
       <option name="presentableId" value="Default" />
       <updated>1551210340636</updated>
       <workItem from="1551210342508" duration="15867000" />
-      <workItem from="1551818756142" duration="3462000" />
+      <workItem from="1551818756142" duration="4175000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19329000" />
+    <option name="totallyTimeSpent" value="20042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="248" y="27" width="1454" height="1012" extended-state="0" />
@@ -591,8 +591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hmr/demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="108" column="41" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+        <state relative-caret-position="495">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
           <folding>
             <element signature="e#676#714#0" expanded="true" />
           </folding>
