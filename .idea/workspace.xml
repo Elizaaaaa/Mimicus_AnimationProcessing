@@ -308,8 +308,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/hmr/demo.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="126">
-                  <caret line="148" column="39" lean-forward="true" selection-start-line="148" selection-start-column="39" selection-end-line="148" selection-end-column="39" />
+                <state relative-caret-position="638">
+                  <caret line="223" column="4" selection-start-line="223" selection-start-column="4" selection-end-line="223" selection-end-column="4" />
                   <folding>
                     <element signature="e#676#714#0" expanded="true" />
                   </folding>
@@ -330,7 +330,7 @@
             <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="324">
-                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                  <caret line="18" selection-start-line="18" selection-end-line="18" />
                 </state>
               </provider>
             </entry>
@@ -339,7 +339,7 @@
             <entry file="file://$PROJECT_DIR$/hmr/3dpose_estimate.sh">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="252">
-                  <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+                  <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -348,7 +348,7 @@
             <entry file="file://$PROJECT_DIR$/hmr/orig_demo.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="198">
-                  <caret line="127" column="4" lean-forward="true" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
+                  <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -361,7 +361,7 @@
             <entry file="file://$PROJECT_DIR$/hmr/orig_demo.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="90">
-                  <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+                  <caret line="64" column="22" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -464,12 +464,12 @@
       <option name="presentableId" value="Default" />
       <updated>1551210340636</updated>
       <workItem from="1551210342508" duration="15867000" />
-      <workItem from="1551818756142" duration="5313000" />
+      <workItem from="1551818756142" duration="5563000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21180000" />
+    <option name="totallyTimeSpent" value="21430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1613" height="1025" extended-state="6" />
@@ -588,7 +588,7 @@
     <entry file="file://$PROJECT_DIR$/hmr/3dpose_estimate.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -605,7 +605,7 @@
     <entry file="file://$PROJECT_DIR$/video_to_bvh.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -619,14 +619,14 @@
     <entry file="file://$PROJECT_DIR$/hmr/orig_demo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="127" column="4" lean-forward="true" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
+          <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hmr/demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="148" column="39" lean-forward="true" selection-start-line="148" selection-start-column="39" selection-end-line="148" selection-end-column="39" />
+        <state relative-caret-position="638">
+          <caret line="223" column="4" selection-start-line="223" selection-start-column="4" selection-end-line="223" selection-end-column="4" />
           <folding>
             <element signature="e#676#714#0" expanded="true" />
           </folding>
