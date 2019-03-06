@@ -38,7 +38,7 @@ flags.DEFINE_string(
     'If specified, uses the openpose output to crop the image.')
 
 
-def visualize(img_path, img, proc_param, joints, verts, cam):
+def visualize(img_path, img, proc_param, joints, verts, cam, name):
     """
     Renders the result in original image coordinate frame.
     """
@@ -85,7 +85,7 @@ def visualize(img_path, img, proc_param, joints, verts, cam):
     plt.title('diff vp')
     plt.axis('off')
     plt.draw()
-    plt.savefig("hmr/output/images/" + os.path.splitext(os.path.basename(img_path))[0] + ".png")
+    plt.savefig("hmr/output/images/" + name + ".png")
     # import ipdb
     # ipdb.set_trace()
 
@@ -121,67 +121,57 @@ def main(img_path, json_path=None):
     sess = tf.Session()
     model = RunModel(config, sess=sess)
 
-    # TODO: input_img, proc_pram, img all should be array that contains all images
+    joints_names = ['Ankle.R_x', 'Ankle.R_y', 'Ankle.R_z',
+                    'Knee.R_x', 'Knee.R_y', 'Knee.R_z',
+                    'Hip.R_x', 'Hip.R_y', 'Hip.R_z',
+                    'Hip.L_x', 'Hip.L_y', 'Hip.L_z',
+                    'Knee.L_x', 'Knee.L_y', 'Knee.L_z',
+                    'Ankle.L_x', 'Ankle.L_y', 'Ankle.L_z',
+                    'Wrist.R_x', 'Wrist.R_y', 'Wrist.R_z',
+                    'Elbow.R_x', 'Elbow.R_y', 'Elbow.R_z',
+                    'Shoulder.R_x', 'Shoulder.R_y', 'Shoulder.R_z',
+                    'Shoulder.L_x', 'Shoulder.L_y', 'Shoulder.L_z',
+                    'Elbow.L_x', 'Elbow.L_y', 'Elbow.L_z',
+                    'Wrist.L_x', 'Wrist.L_y', 'Wrist.L_z',
+                    'Neck_x', 'Neck_y', 'Neck_z',
+                    'Head_x', 'Head_y', 'Head_z',
+                    'Nose_x', 'Nose_y', 'Nose_z',
+                    'Eye.L_x', 'Eye.L_y', 'Eye.L_z',
+                    'Eye.R_x', 'Eye.R_y', 'Eye.R_z',
+                    'Ear.L_x', 'Ear.L_y', 'Ear.L_z',
+                    'Ear.R_x', 'Ear.R_y', 'Ear.R_z']
+
     images = glob.glob(os.path.join(img_path, "*.png"))
-    input_images = []
-    proc_params = []
+
     for img in images:
-        #TODO: find the json file with the same name
         temp = img.split('/')
-        json_name = temp[2]
-        json_name = json_name[0:len(json_name)-3]
-        json_name = json_path+json_name+'json'
+        no_ext = temp[2]
+        no_ext = no_ext[0:len(no_ext)-4]
+        json_name = json_path+no_ext+'.json'
+        print("Processing: {0}".format(no_ext))
 
         input_img, proc_param, img = preprocess_image(img, json_name)
+        input_img = np.expand_dims(input_img, 0)
 
-    # ======== Original Script ==============
-    #input_img, proc_param, img = preprocess_image(img_path, json_path)
-    ## Add batch dimension: 1 x D x D x 3
-    #input_img = np.expand_dims(input_img, 0)
+        joints, verts, cams, joints3d, theta = model.predict(
+            input_img, get_theta=True)
 
-    #joints, verts, cams, joints3d, theta = model.predict(
-    #    input_img, get_theta=True)
+        joints_export = pd.DataFrame(joints3d.reshape(1, 57), columns=joints_names)
+        joints_export.index.name = 'frame'
 
-    ##     print('JOINTS 3D:')
-    ##    print(joints3d.shape)
-    ##     print(joints3d)
+        joints_export.iloc[:, 1::3] = joints_export.iloc[:, 1::3] * -1
+        joints_export.iloc[:, 2::3] = joints_export.iloc[:, 2::3] * -1
 
-    #joints_names = ['Ankle.R_x', 'Ankle.R_y', 'Ankle.R_z',
-    #                'Knee.R_x', 'Knee.R_y', 'Knee.R_z',
-    #                'Hip.R_x', 'Hip.R_y', 'Hip.R_z',
-    #                'Hip.L_x', 'Hip.L_y', 'Hip.L_z',
-    #                'Knee.L_x', 'Knee.L_y', 'Knee.L_z',
-    #                'Ankle.L_x', 'Ankle.L_y', 'Ankle.L_z',
-    #                'Wrist.R_x', 'Wrist.R_y', 'Wrist.R_z',
-    #                'Elbow.R_x', 'Elbow.R_y', 'Elbow.R_z',
-    #                'Shoulder.R_x', 'Shoulder.R_y', 'Shoulder.R_z',
-    #                'Shoulder.L_x', 'Shoulder.L_y', 'Shoulder.L_z',
-    #                'Elbow.L_x', 'Elbow.L_y', 'Elbow.L_z',
-    #                'Wrist.L_x', 'Wrist.L_y', 'Wrist.L_z',
-    #                'Neck_x', 'Neck_y', 'Neck_z',
-    #                'Head_x', 'Head_y', 'Head_z',
-    #                'Nose_x', 'Nose_y', 'Nose_z',
-    #                'Eye.L_x', 'Eye.L_y', 'Eye.L_z',
-    #                'Eye.R_x', 'Eye.R_y', 'Eye.R_z',
-    #                'Ear.L_x', 'Ear.L_y', 'Ear.L_z',
-    #                'Ear.R_x', 'Ear.R_y', 'Ear.R_z']
+        hipCenter = joints_export.loc[:][['Hip.R_x', 'Hip.R_y', 'Hip.R_z',
+                                          'Hip.L_x', 'Hip.L_y', 'Hip.L_z']]
 
-    #joints_export = pd.DataFrame(joints3d.reshape(1, 57), columns=joints_names)
-    #joints_export.index.name = 'frame'
+        joints_export['hip.Center_x'] = hipCenter.iloc[0][::3].sum() / 2
+        joints_export['hip.Center_y'] = hipCenter.iloc[0][1::3].sum() / 2
+        joints_export['hip.Center_z'] = hipCenter.iloc[0][2::3].sum() / 2
 
-    #joints_export.iloc[:, 1::3] = joints_export.iloc[:, 1::3] * -1
-    #joints_export.iloc[:, 2::3] = joints_export.iloc[:, 2::3] * -1
+        joints_export.to_csv("hmr/output/csv/" + no_ext + ".csv")
 
-    #hipCenter = joints_export.loc[:][['Hip.R_x', 'Hip.R_y', 'Hip.R_z',
-    #                                  'Hip.L_x', 'Hip.L_y', 'Hip.L_z']]
-
-    #joints_export['hip.Center_x'] = hipCenter.iloc[0][::3].sum() / 2
-    #joints_export['hip.Center_y'] = hipCenter.iloc[0][1::3].sum() / 2
-    #joints_export['hip.Center_z'] = hipCenter.iloc[0][2::3].sum() / 2
-
-    #joints_export.to_csv("hmr/output/csv/" + os.path.splitext(os.path.basename(img_path))[0] + ".csv")
-
-    #visualize(img_path, img, proc_param, joints[0], verts[0], cams[0])
+        visualize(img_path, img, proc_param, joints[0], verts[0], cams[0], no_ext)
 
 
 def join_csv():
