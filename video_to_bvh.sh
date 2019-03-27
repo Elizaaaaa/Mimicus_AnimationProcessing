@@ -10,6 +10,8 @@ cd keras_Realtime_Multi-Person_Pose_Estimation
 mkdir sample_jsons
 mkdir sample_images
 
+gsutil cp gs://mimicus-videos/user-uploads/* ./sample_videos/
+
 bash model/get_keras_model.sh
 bash video_to_images.sh 12
 
@@ -24,6 +26,7 @@ blender --background hmr/csv_to_bvh.blend -noaudio -P hmr/csv_to_bvh.py
 
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/*
+rm keras_Realtime_Multi-Person_Pose_Estimation/sample_videos/*
 
 rm -rf hmr/output/csv/*
 rm hmr/output/images/*
@@ -31,3 +34,4 @@ rm hmr/output/images/*
 time=$(date "+%m.%d-%H.%M")
 gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/time/
 rm hmr/output/bvh_animation/*
+
