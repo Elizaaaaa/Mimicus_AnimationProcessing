@@ -20,7 +20,7 @@ cd ..
 bash hmr/3dpose_estimate.sh
 
 blender --background hmr/csv_to_bvh.blend -noaudio -P hmr/csv_to_bvh.py
-blender --background hmr/bvh_to_fbx.blend -noaudio -P hmr/bvh_to_fbx.py
+#blender --background hmr/bvh_to_fbx.blend -noaudio -P hmr/bvh_to_fbx.py
 
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/*
@@ -28,4 +28,6 @@ rm keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/*
 rm -rf hmr/output/csv/*
 rm hmr/output/images/*
 
-
+time=$(date "+%m.%d-%H.%M")
+gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/time/
+rm hmr/output/bvh_animation/*
