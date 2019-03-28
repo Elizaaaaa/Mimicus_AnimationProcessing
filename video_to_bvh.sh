@@ -32,6 +32,6 @@ rm -rf hmr/output/csv/*
 rm hmr/output/images/*
 
 time=$(date "+%m.%d-%H.%M")
-gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/time/
+gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/$time/
 rm hmr/output/bvh_animation/*
 
