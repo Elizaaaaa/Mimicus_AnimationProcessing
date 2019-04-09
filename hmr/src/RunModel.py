@@ -54,6 +54,7 @@ class RunModel(object):
         self.total_params = self.num_cam + self.num_theta + 10
 
         self.smpl = SMPL(self.smpl_model_path, joint_type=self.joint_type)
+        print("what is smpl? {}".format(self.smpl))
 
         # self.theta0_pl = tf.placeholder_with_default(
         #     self.load_mean_param(), shape=[self.batch_size, self.total_params], name='theta0')
