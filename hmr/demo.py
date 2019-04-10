@@ -89,8 +89,6 @@ def visualize(img_path, img, proc_param, joints, verts, cam, name):
     # import ipdb
     # ipdb.set_trace()
 
-
-# TODO: Load all images, process all, and return all
 def preprocess_image(img_path, json_path=None):
     img = io.imread(img_path)
     if img.shape[2] == 4:

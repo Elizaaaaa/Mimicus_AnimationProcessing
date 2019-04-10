@@ -10,4 +10,7 @@
   python2 hmr/demo.py --img_path keras_Realtime_Multi-Person_Pose_Estimation/sample_images/ \
                      --json_path keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/
 
+  echo "Smoothing the animation curve..."
+  python hmr/denoising.py
+
 echo "Done"

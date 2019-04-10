@@ -7,6 +7,7 @@ mkdir hmr/output/bvh_animation
 
 cd keras_Realtime_Multi-Person_Pose_Estimation
 
+mkdir sample_videos
 mkdir sample_jsons
 mkdir sample_images
 
