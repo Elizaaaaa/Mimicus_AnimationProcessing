@@ -41,15 +41,15 @@ for filename in os.listdir('sample_images'):
           heatmap = cv2.resize(heatmap, (0,0), fx=model_params['stride'], fy=model_params['stride'], interpolation=cv2.INTER_CUBIC)
           heatmap = heatmap[:imageToTest_padded.shape[0]-pad[2], :imageToTest_padded.shape[1]-pad[3], :]
           heatmap = cv2.resize(heatmap, (oriImg.shape[1], oriImg.shape[0]), interpolation=cv2.INTER_CUBIC)
-          smoother = Smoother({'data': heatmap}, 25, 3.0)
+          #smoother = Smoother({'data': heatmap}, 25, 3.0)
 
           paf = np.squeeze(output_blobs[0]) # output 0 is PAFs
           paf = cv2.resize(paf, (0,0), fx=model_params['stride'], fy=model_params['stride'], interpolation=cv2.INTER_CUBIC)
           paf = paf[:imageToTest_padded.shape[0]-pad[2], :imageToTest_padded.shape[1]-pad[3], :]
           paf = cv2.resize(paf, (oriImg.shape[1], oriImg.shape[0]), interpolation=cv2.INTER_CUBIC)
 
-          #heatmap_avg = heatmap_avg + heatmap / len(multiplier)
-          heatmap_avg = smoother.get_output()
+          heatmap_avg = heatmap_avg + heatmap / len(multiplier)
+          #heatmap_avg = smoother.get_output()
           paf_avg = paf_avg + paf / len(multiplier)
 
 

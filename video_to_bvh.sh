@@ -15,7 +15,9 @@ echo "Start Downloads.."
 ## Download from cloud storage 
 #gsutil cp gs://mimicus-videos/user-uploads/* ./sample_videos/
 ## Download from google gdrive
-gdrive download --recursive 15uXxRZAiomTdDPp1T933nETZM_oBB7kC
+gdrive download --recursive --delete 15uXxRZAiomTdDPp1T933nETZM_oBB7kC
+gsutil rm gs://mimicus-videos/user-uploads/*
+gsutil cp demo/videos/* gs://mimicus-videos/user-uploads/
 sudo mv demo/videos/* ./sample_videos/
 echo "Downloads finished."
 

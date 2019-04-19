@@ -37,58 +37,6 @@ flags.DEFINE_string(
     'json_path', None,
     'If specified, uses the openpose output to crop the image.')
 
-
-def visualize(img_path, img, proc_param, joints, verts, cam, name):
-    """
-    Renders the result in original image coordinate frame.
-    """
-    cam_for_render, vert_shifted, joints_orig = vis_util.get_original(
-        proc_param, verts, cam, joints, img_size=img.shape[:2])
-
-    # Render results
-    skel_img = vis_util.draw_skeleton(img, joints_orig)
-    rend_img_overlay = renderer(
-        vert_shifted, cam=cam_for_render, img=img, do_alpha=True)
-    rend_img = renderer(
-        vert_shifted, cam=cam_for_render, img_size=img.shape[:2])
-    rend_img_vp1 = renderer.rotated(
-        vert_shifted, 60, cam=cam_for_render, img_size=img.shape[:2])
-    rend_img_vp2 = renderer.rotated(
-        vert_shifted, -60, cam=cam_for_render, img_size=img.shape[:2])
-
-    import matplotlib.pyplot as plt
-    # plt.ion()
-    plt.figure(1)
-    plt.clf()
-    plt.subplot(231)
-    plt.imshow(img)
-    plt.title('input')
-    plt.axis('off')
-    plt.subplot(232)
-    plt.imshow(skel_img)
-    plt.title('joint projection')
-    plt.axis('off')
-    plt.subplot(233)
-    plt.imshow(rend_img_overlay)
-    plt.title('3D Mesh overlay')
-    plt.axis('off')
-    plt.subplot(234)
-    plt.imshow(rend_img)
-    plt.title('3D mesh')
-    plt.axis('off')
-    plt.subplot(235)
-    plt.imshow(rend_img_vp1)
-    plt.title('diff vp')
-    plt.axis('off')
-    plt.subplot(236)
-    plt.imshow(rend_img_vp2)
-    plt.title('diff vp')
-    plt.axis('off')
-    plt.draw()
-    plt.savefig("hmr/output/images/" + name + ".png")
-    # import ipdb
-    # ipdb.set_trace()
-
 def preprocess_image(img_path, json_path=None):
     img = io.imread(img_path)
     if img.shape[2] == 4:
@@ -168,8 +116,6 @@ def main(img_path, json_path=None):
         joints_export['hip.Center_z'] = hipCenter.iloc[0][2::3].sum() / 2
 
         joints_export.to_csv("hmr/output/csv/" + no_ext + ".csv")
-
-        visualize(img_path, img, proc_param, joints[0], verts[0], cams[0], no_ext)
 
 
 def join_csv():
