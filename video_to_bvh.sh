@@ -15,7 +15,7 @@ echo "Start Downloads.."
 ## Download from cloud storage 
 #gsutil cp gs://mimicus-videos/user-uploads/* ./sample_videos/
 ## Download from google gdrive
-gdrive download --recursive --delete 15uXxRZAiomTdDPp1T933nETZM_oBB7kC
+gdrive download --recursive 15uXxRZAiomTdDPp1T933nETZM_oBB7kC
 gsutil rm gs://mimicus-videos/user-uploads/*
 gsutil cp demo/videos/* gs://mimicus-videos/user-uploads/
 sudo mv demo/videos/* ./sample_videos/
@@ -36,9 +36,9 @@ blender --background hmr/csv_to_bvh.blend -noaudio -P hmr/csv_to_bvh.py
 
 echo "Cleaning data.."
 
-##Upload images for debugging
+##Upload images and csvs for debugging
 #gsutil cp -r hmr/output/images gs://mimicus-videos/debug/output_images/$time/
-gsutil cp -r hmr/output/csv gs://mimicus-videos/debug/output_csv/$time/
+#gsutil cp -r hmr/output/csv gs://mimicus-videos/debug/output_csv/$time/
 
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_images/*
 rm keras_Realtime_Multi-Person_Pose_Estimation/sample_jsons/*
@@ -48,8 +48,12 @@ rm -rf hmr/output/csv/*
 rm hmr/output/images/*
 
 echo "Uploading to cloud storage.."
-time=$(date "+%m.%d-%H.%M")
-gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/$time/
+#time=$(date "+%m.%d-%H.%M")
+#gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/$time/
+
+#For unreal use
+gsutil rm gs://mimicus-videos/bvh/unrealtest/*
+gsutil cp hmr/output/bvh_animation/* gs://mimicus-videos/bvh/unrealtest/
 
 #dir="./hmr/output/bvh_animation/"
 #for f in "$dir"/*; do
